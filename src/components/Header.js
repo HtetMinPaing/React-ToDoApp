@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button, { SelectButton } from './Button';
 import style from '../styles/modules/app.module.scss';
+import ToDoModal from './ToDoModal';
 
-const Header = () => (
-  <div className={style.appHeader}>
-    <Button variant="primary" type="button">
-      Click Me
-    </Button>
-    <SelectButton>
-      <option value="all">All</option>
-      <option value="incomplete">Incomplete</option>
-      <option value="complete">Complete</option>
-    </SelectButton>
-  </div>
-);
+const Header = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  return (
+    <div className={style.appHeader}>
+      <Button variant="primary" onClick={() => setModalOpen(true)}>
+        Add Task
+      </Button>
+      <SelectButton id="status">
+        <option value="all">All</option>
+        <option value="incomplete">Incomplete</option>
+        <option value="complete">Complete</option>
+      </SelectButton>
+      <ToDoModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+    </div>
+  );
+};
 
 export default Header;
