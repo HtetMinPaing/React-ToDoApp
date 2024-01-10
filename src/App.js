@@ -1,9 +1,15 @@
 import React from 'react';
+import Title from './components/Title';
+import style from './styles/modules/app.module.scss';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="container">
-      <h1>Hello World</h1>
+      <Title>To Do Lists</Title>
+      <div className={style.app__wrapper}>
+        <Header />
+      </div>
     </div>
   );
 }
