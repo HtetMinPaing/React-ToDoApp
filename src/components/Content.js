@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Button, { SelectButton } from './Button';
 import style from '../styles/modules/app.module.scss';
+import ToDoItem from './ToDoItem';
 
 function Content() {
   const todoList = useSelector((state) => state.todo.todoList);
@@ -13,7 +14,7 @@ function Content() {
   return (
     <div>
       {sortedTodoList && sortedTodoList.length > 0
-        ? sortedTodoList.map((todo) => todo.title)
+        ? sortedTodoList.map((todo) => <ToDoItem key={todo.id} todo={todo} />)
         : 'No'}
     </div>
   );
