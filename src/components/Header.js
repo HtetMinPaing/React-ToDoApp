@@ -15,7 +15,7 @@ const Header = () => {
         <option value="incomplete">Incomplete</option>
         <option value="complete">Complete</option>
       </SelectButton>
-      <ToDoModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      <ToDoModal modalOpen={modalOpen} setModalOpen={setModalOpen} type="add" />
     </div>
   );
 };

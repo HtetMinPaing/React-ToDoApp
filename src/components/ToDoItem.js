@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { format } from 'date-fns/esm';
 import { MdDelete, MdEdit } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import style from '../styles/modules/todoItem.module.scss';
 import { getClasses } from '../utils/getClasses';
 import { deleteTodo } from '../slices/todoSlice';
+import ToDoModal from './ToDoModal';
 
 function ToDoItem({ todo }) {
   const dispatch = useDispatch();
+  const [updateModal, setUpdateModal] = useState(false);
   const handleDelete = () => {
     dispatch(deleteTodo(todo.id));
   };
 
   const handleEdit = () => {
-    console.log('Edit');
+    setUpdateModal(true);
   };
   return (
     <div className={style.item}>
@@ -54,6 +56,12 @@ function ToDoItem({ todo }) {
           <MdEdit />
         </div>
       </div>
+      <ToDoModal
+        type="update"
+        modalOpen={updateModal}
+        setModalOpen={setUpdateModal}
+        todo={todo}
+      />
     </div>
   );
 }
