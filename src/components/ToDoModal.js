@@ -67,7 +67,9 @@ function ToDoModal({ modalOpen, setModalOpen, type, todo }) {
             <MdOutlineClose />
           </div>
           <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
-            <h1 className={style.formTitle}>Add Task</h1>
+            <h1 className={style.formTitle}>
+              {type === 'update' ? 'Update Task' : 'Add Task'}
+            </h1>
             <label htmlFor="title">
               Title
               <input
@@ -91,7 +93,7 @@ function ToDoModal({ modalOpen, setModalOpen, type, todo }) {
             </label>
             <div className={style.buttonContainer}>
               <Button type="submit" variant="primary">
-                Add Task
+                {type === 'update' ? 'Update Task' : 'Add Task'}
               </Button>
               <Button
                 type="submit"
